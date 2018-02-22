@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<Ul id="ul">
+
+	</Ul>
+
+	<script type="text/javascript">
+		
+		// var person={
+		// 	name:"Yilang",
+		// 	address:"7 hainse",
+		// 	email: function email(){
+		// 		return "xuan@gmail.com"
+		// 	}
+		// }	
+		// 	person = JSON.stringify(person);
+		// 	console.log(person)
+
+		// var people = [{name:"yilang",age:"28"},{name:"kyo",age:"20"},{name:"haha",age:"10"}];
+		var people
+	var xhttp=new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+  	if (this.readyState == 4 && this.status == 200) {
+		 var response = JSON.parse(xhttp.responseText);
+		  people = response.people;
+		 console.log(people)
+
+		 for(var i = 0; i<people.length;i++){
+			
+			var output = document.createTextNode(people[i].name);
+			var node = document.createElement('li');
+			node.appendChild(output);
+			document.getElementById('ul').appendChild(node);
+			
+		}
+
+		
+ 	 }
+	};
+	xhttp.open("GET", "people.json", true);
+	xhttp.send();
+
+		
+
+
+	</script>
+
+</body>
+</html>
